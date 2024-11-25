@@ -7,7 +7,12 @@ export class AppController {
 
   @Get()
   @HttpCode(200)
-  getNumber(@Query('num') num: number): number {
+  getNumber(@Query('num') num: string): number {
     return this.appService.getNumber(num);
+  }
+
+  @Get('/env')
+  getEnv(): string {
+    return `env: ${process.env.env}, appVersion: ${process.env.appVersion}`;
   }
 }
