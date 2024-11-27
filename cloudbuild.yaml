@@ -38,9 +38,3 @@ substitutions:
   _SERVICE_NAME: nodejs-number
 # Timeout settings (optional)
 timeout: '1890s'
-
-# Artifacts (optional, for debugging or logs)
-artifacts:
-  objects:
-    location: 'gs://$PROJECT_ID-artifacts/'
-    paths: ['**/*.log']
