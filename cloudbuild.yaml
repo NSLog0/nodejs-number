@@ -3,6 +3,15 @@ options:
 
 
 steps:
+  - name: gcr.io/cloud-builders/gcloud
+    id: 'load-env'
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        gcloud secrets versions access latest --secret$_SERVICE_NAME-staging --format='get(payload.data)' | tr '_-' '/+' | base64 -d > .env
+        cat .env
+
   # Step 0: Install dependencies and run tests
   - name: 'node'
     entrypoint: 'bash'
