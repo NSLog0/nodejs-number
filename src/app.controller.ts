@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, Query } from '@nestjs/common';
+import { Controller, Get, HttpCode, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,15 +11,15 @@ export class AppController {
     return 'Hello World!';
   }
 
-  @Get('/square')
+  @Get('/square/:num')
   @HttpCode(200)
-  squareNumber(@Query('num') num: string): number {
+  squareNumber(@Param('num') num: string): number {
     return this.appService.squareNumber(num);
   }
 
-  @Get('/cube')
+  @Get('/cube/:num')
   @HttpCode(200)
-  cubeNumber(@Query('num') num: string): number {
+  cubeNumber(@Param('num') num: string): number {
     return this.appService.cubeNumber(num);
   }
 
