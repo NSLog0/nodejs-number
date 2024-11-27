@@ -1,0 +1,33 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/nestjs-app:$COMMIT_SHA', '.']
+
+  # Step 2: Push the Docker image to Google Container Registry (GCR) or Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/nestjs-app:$COMMIT_SHA']
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - nestjs-app
+      - --image=gcr.io/$PROJECT_ID/nestjs-app:$COMMIT_SHA
+      - --region=us-central1
+      - --platform=managed
+      - --allow-unauthenticated # Adjust based on your app's access needs
+
+# Substitutions for build
+substitutions:
+  _REGION: asia-southeast1
+  _SERVICE_NAME: nodejs-number
+# Timeout settings (optional)
+timeout: '600s'
+
+# Artifacts (optional, for debugging or logs)
+artifacts:
+  objects:
+    location: 'gs://$PROJECT_ID-artifacts/'
+    paths: ['**/*.log']

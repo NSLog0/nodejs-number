@@ -7,8 +7,20 @@ export class AppController {
 
   @Get()
   @HttpCode(200)
-  getNumber(@Query('num') num: string): number {
-    return this.appService.getNumber(num);
+  getHello(): string {
+    return 'Hello World!';
+  }
+
+  @Get('/square')
+  @HttpCode(200)
+  squareNumber(@Query('num') num: string): number {
+    return this.appService.squareNumber(num);
+  }
+
+  @Get('/cube')
+  @HttpCode(200)
+  cubeNumber(@Query('num') num: string): number {
+    return this.appService.cubeNumber(num);
   }
 
   @Get('/env')

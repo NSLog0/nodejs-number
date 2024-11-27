@@ -14,13 +14,23 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return 333', () => {
-      expect(appController.getNumber(2)).toBe(3);
+  describe('square number', () => {
+    it('it should return 4', () => {
+      expect(appController.squareNumber('2')).toBe(4);
     });
 
-    it('should return 5', () => {
-      expect(appController.getNumber(4)).toBe(5);
+    it('it should return 8', () => {
+      expect(appController.squareNumber('4')).toBe(8);
+    });
+  });
+
+  describe('cube number', () => {
+    it('it should return 6', () => {
+      expect(appController.cubeNumber('2')).toBe(6);
+    });
+
+    it('it should return 12', () => {
+      expect(appController.cubeNumber('4')).toBe(12);
     });
   });
 });
