@@ -25,6 +25,6 @@ export class AppController {
 
   @Get('/env')
   getEnv(): string {
-    return `env: ${process.env.env}, appVersion: ${process.env.appVersion}`;
+    return `env: ${process.env.ENV_NAME}, appVersion: ${process.env.APP_VERSION}`;
   }
 }
