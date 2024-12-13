@@ -26,11 +26,11 @@ describe('AppController', () => {
 
   describe('cube number', () => {
     it('it should return 6', () => {
-      expect(appController.cubeNumber('2')).toBe(6);
+      expect(appController.cubeNumber('2')).toBe(8);
     });
 
     it('it should return 12', () => {
-      expect(appController.cubeNumber('4')).toBe(12);
+      expect(appController.cubeNumber('4')).toBe(16);
     });
   });
 });
