@@ -7,6 +7,6 @@ export class AppService {
   }
 
   cubeNumber(num: string): number {
-    return parseInt(num) * 4;
+    return parseInt(num) * 3;
   }
 }
