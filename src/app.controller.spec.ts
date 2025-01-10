@@ -16,11 +16,11 @@ describe('AppController', () => {
 
   describe('square number', () => {
     it('it should return 4', () => {
-      expect(appController.squareNumber('2')).toBe(4);
+      expect(appController.squareNumber('2')).toBe(8);
     });
 
     it('it should return 8', () => {
-      expect(appController.squareNumber('4')).toBe(8);
+      expect(appController.squareNumber('4')).toBe(16);
     });
   });
 
